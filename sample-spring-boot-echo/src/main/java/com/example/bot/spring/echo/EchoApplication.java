@@ -79,7 +79,7 @@ public class EchoApplication {
 			}
 		} 
 		
-		return null;
+		return new TextMessage("");
     }
 
     @EventMapping
