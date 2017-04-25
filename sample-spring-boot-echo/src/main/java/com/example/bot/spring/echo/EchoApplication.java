@@ -73,12 +73,13 @@ public class EchoApplication {
 			hmap.put(event.getMessage().getText().split("學:")[1].split("#31#")[0], event.getMessage().getText().split("學:")[1].split("#31#")[1]);
 			return new TextMessage("我學起來了。");
 		} else if(event.getMessage().getText().contains("$$") && event.getMessage().getText().length() == 6) {
-			String code = event.getMessage().getText().replace("$", "");
-			String urlString = "http://finance.google.com/finance/info?client=ig&q=" + code;
+			//String code = event.getMessage().getText().replace("$", "");
+			//String urlString = "http://finance.google.com/finance/info?client=ig&q=" + code;
 			String result = "查不到此股票";
+			return new TextMessage(result);
 			
+			/*
 			try {
-				/*
 				URL url = new URL(urlString);
 				HttpURLConnection connection = (HttpURLConnection) url.openConnection();
 				connection.setRequestMethod("GET");
@@ -98,13 +99,14 @@ public class EchoApplication {
 				String money = result.split("\"l_cur\" : \"")[1].split("\"")[0];
 				String up = result.split("\"c\" : \"")[1].split("\"")[0];
 				result = "交易時間 : " + time + "\n價格 : " + money + "\n漲幅 : " + up;
-				*/
+				
 				return new TextMessage(result);
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 				return null;
 			}
+			*/
 		} else {
 			return null;
 		}
