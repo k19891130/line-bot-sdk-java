@@ -32,6 +32,7 @@ import java.util.HashMap;
 public class EchoApplication {
 	
 	static HashMap<String, String> hmap = new HashMap<String, String>();
+	static boolean power = false;
 	
     public static void main(String[] args) {
         SpringApplication.run(EchoApplication.class, args);
@@ -41,31 +42,43 @@ public class EchoApplication {
     public TextMessage handleTextMessageEvent(MessageEvent<TextMessageContent> event) {
         System.out.println("event: " + event);
 		
-		if(hmap.containsKey(event.getMessage().getText())) {
-			return new TextMessage(hmap.get(event.getMessage().getText()));
-		} else if(event.getMessage().getText().equals("早安")) {
-			return new TextMessage("早安吃飽了嘛?");
-		} else if(event.getMessage().getText().contains("愛我") && event.getMessage().getText().contains("?")) {
-			return new TextMessage("愛");
-		} else if(event.getMessage().getText().contains("美") && event.getMessage().getText().contains("?")) {
-			return new TextMessage("美");
-		} else if(event.getMessage().getText().contains("能") && event.getMessage().getText().contains("?")) {
-			return new TextMessage("能");
-		} else if(event.getMessage().getText().contains("帥") && event.getMessage().getText().contains("?")) {
-			return new TextMessage("帥");
-		} else if(event.getMessage().getText().contains("胖") && event.getMessage().getText().contains("?")) {
-			return new TextMessage("不胖");
-		} else if(event.getMessage().getText().contains("好") && event.getMessage().getText().contains("?")) {
+		if(event.getMessage().getText().equals("Wanger出來")) {
+			power = true;
 			return new TextMessage("好");
-		} else if(event.getMessage().getText().contains("對") && event.getMessage().getText().contains("?")) {
-			return new TextMessage("對");
-		} else if(event.getMessage().getText().contains("是") && event.getMessage().getText().contains("?")) {
-			return new TextMessage("是");
-		} else if(event.getMessage().getText().contains("學:")){
-			hmap.put(event.getMessage().getText().split("學:")[1].split(" ")[0], event.getMessage().getText().split("學:")[1].split(" ")[1]);
-			return new TextMessage("我學起來了。");
+		} else if(event.getMessage().getText().equals("Wanger掰")) {
+			power = false;
+			return new TextMessage("掰掰");
+		}
+		
+		if(power) {
+			if(hmap.containsKey(event.getMessage().getText())) {
+				return new TextMessage(hmap.get(event.getMessage().getText()));
+			} else if(event.getMessage().getText().equals("早安")) {
+				return new TextMessage("早安吃飽了嘛?");
+			} else if(event.getMessage().getText().contains("愛我") && event.getMessage().getText().contains("?")) {
+				return new TextMessage("愛");
+			} else if(event.getMessage().getText().contains("美") && event.getMessage().getText().contains("?")) {
+				return new TextMessage("美");
+			} else if(event.getMessage().getText().contains("能") && event.getMessage().getText().contains("?")) {
+				return new TextMessage("能");
+			} else if(event.getMessage().getText().contains("帥") && event.getMessage().getText().contains("?")) {
+				return new TextMessage("帥");
+			} else if(event.getMessage().getText().contains("胖") && event.getMessage().getText().contains("?")) {
+				return new TextMessage("不胖");
+			} else if(event.getMessage().getText().contains("好") && event.getMessage().getText().contains("?")) {
+				return new TextMessage("好");
+			} else if(event.getMessage().getText().contains("對") && event.getMessage().getText().contains("?")) {
+				return new TextMessage("對");
+			} else if(event.getMessage().getText().contains("是") && event.getMessage().getText().contains("?")) {
+				return new TextMessage("是");
+			} else if(event.getMessage().getText().contains("學:")){
+				hmap.put(event.getMessage().getText().split("學:")[1].split(" ")[0], event.getMessage().getText().split("學:")[1].split(" ")[1]);
+				return new TextMessage("我學起來了。");
+			} else {
+				return new TextMessage("你還沒教我這個。");
+			}
 		} else {
-			return new TextMessage("你還沒教我這個。");
+			return null;
 		}
     }
 
