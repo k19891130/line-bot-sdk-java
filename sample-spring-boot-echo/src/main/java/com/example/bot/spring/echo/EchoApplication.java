@@ -33,7 +33,7 @@ public class EchoApplication {
         SpringApplication.run(EchoApplication.class, args);
     }
 
-    @EventMapping(priority = 1, secretKey = "8cf12b924a94a9f309db6a8e347e027a")
+    @EventMapping(priority = 1, secretKey = 8cf12b924a94a9f309db6a8e347e027a)
     public void handleTextMessageEvent1(MessageEvent<TextMessageContent> event, String secretKey) {
         System.out.println("event: " + event);
         System.out.println("secretKey: " + secretKey);
