@@ -84,7 +84,6 @@ public class EchoApplication {
 			} else {
 				return null;
 			}
-			return null;
 		//} 
 		
 		//return new TextMessage("");
