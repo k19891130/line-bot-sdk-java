@@ -32,14 +32,15 @@ public class EchoApplication {
     public static void main(String[] args) {
         SpringApplication.run(EchoApplication.class, args);
     }
-
+	
+	/*
     @EventMapping(priority = 1, secretKey = 8cf12b924a94a9f309db6a8e347e027a)
     public void handleTextMessageEvent1(MessageEvent<TextMessageContent> event, String secretKey) {
         System.out.println("event: " + event);
         System.out.println("secretKey: " + secretKey);
         lineMessagingClientFactory.get(secretKey).pushMessage(new PushMessage(event.getSource().getUserId(), new TextMessage("test")));
     }
-	/*
+	
     @EventMapping(priority = 1, secretKey = "${your-channel-secret-2}")
     public void handleTextMessageEvent2(MessageEvent<TextMessageContent> event) {
         System.out.println("event: " + event);
