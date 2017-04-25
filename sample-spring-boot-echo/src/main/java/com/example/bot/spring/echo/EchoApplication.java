@@ -78,6 +78,7 @@ public class EchoApplication {
 			String result = "查不到此股票";
 			
 			try {
+				/*
 				URL url = new URL(urlString);
 				HttpURLConnection connection = (HttpURLConnection) url.openConnection();
 				connection.setRequestMethod("GET");
@@ -97,6 +98,7 @@ public class EchoApplication {
 				String money = result.split("\"l_cur\" : \"")[1].split("\"")[0];
 				String up = result.split("\"c\" : \"")[1].split("\"")[0];
 				result = "交易時間 : " + time + "\n價格 : " + money + "\n漲幅 : " + up;
+				*/
 				return new TextMessage(result);
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
