@@ -72,13 +72,13 @@ public class EchoApplication {
 			} else if(event.getMessage().getText().contains("是") && event.getMessage().getText().contains("?")) {
 				return new TextMessage("是");
 			} else if(event.getMessage().getText().contains("學:")){
-				hmap.put(event.getMessage().getText().split("學:")[1].split(" ")[0], event.getMessage().getText().split("學:")[1].split(" ")[1]);
+				hmap.put(event.getMessage().getText().split("學:")[1].split("#31#")[0], event.getMessage().getText().split("學:")[1].split("#31#")[1]);
 				return new TextMessage("我學起來了。");
 			} else {
 				return new TextMessage("你還沒教我這個。");
 			}
 		} else {
-			return new TextMessage();
+			return new TextMessage("");
 		}
     }
 
