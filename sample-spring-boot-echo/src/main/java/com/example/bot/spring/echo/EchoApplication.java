@@ -25,10 +25,14 @@ import com.linecorp.bot.model.event.message.TextMessageContent;
 import com.linecorp.bot.model.message.TextMessage;
 import com.linecorp.bot.spring.boot.annotation.EventMapping;
 import com.linecorp.bot.spring.boot.annotation.LineMessageHandler;
+import java.util.HashMap;
 
 @SpringBootApplication
 @LineMessageHandler
 public class EchoApplication {
+	
+	static HashMap<String, String> hmap = new HashMap<String, String>();
+	
     public static void main(String[] args) {
         SpringApplication.run(EchoApplication.class, args);
     }
@@ -37,7 +41,9 @@ public class EchoApplication {
     public TextMessage handleTextMessageEvent(MessageEvent<TextMessageContent> event) {
         System.out.println("event: " + event);
 		
-		if(event.getMessage().getText().equals("早安")) {
+		if(hmap.containsKey(event.getMessage().getText())) {
+			return new TextMessage(hmap.get(event.getMessage().getText()));
+		} else if(event.getMessage().getText().equals("早安")) {
 			return new TextMessage("早安吃飽了嘛?");
 		} else if(event.getMessage().getText().contains("愛我") && event.getMessage().getText().contains("?")) {
 			return new TextMessage("愛");
@@ -55,8 +61,11 @@ public class EchoApplication {
 			return new TextMessage("對");
 		} else if(event.getMessage().getText().contains("是") && event.getMessage().getText().contains("?")) {
 			return new TextMessage("是");
+		} else if(event.getMessage().getText().contains("學:")){
+			hmap.put(event.getMessage().getText().split("學:")[1].split(" ")[0], event.getMessage().getText().split("學:")[1].split(" ")[1]);
+			return new TextMessage("我學起來了。");
 		} else {
-			return new TextMessage("Wanger : " + event.getMessage().getText());
+			return new TextMessage("你還沒教我這個。");
 		}
     }
 
