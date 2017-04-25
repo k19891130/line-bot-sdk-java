@@ -117,7 +117,7 @@ public class EchoApplication {
 					return new TextMessage("");
 				}
 			} else {
-				return null;
+				return new TextMessage("");
 			}
 			return new TextMessage("");
 		//} 
