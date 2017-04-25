@@ -42,15 +42,15 @@ public class EchoApplication {
     public TextMessage handleTextMessageEvent(MessageEvent<TextMessageContent> event) {
         System.out.println("event: " + event);
 		
-		if(event.getMessage().getText().equals("Wanger出來")) {
+		/*if(event.getMessage().getText().equals("Wanger出來")) {
 			power = true;
 			return new TextMessage("好");
 		} else if(event.getMessage().getText().equals("Wanger掰")) {
 			power = false;
 			return new TextMessage("掰掰");
-		}
+		}*/
 		
-		if(power) {
+		//if(power) {
 			if(hmap.containsKey(event.getMessage().getText())) {
 				return new TextMessage(hmap.get(event.getMessage().getText()));
 			} else if(event.getMessage().getText().equals("早安")) {
@@ -77,9 +77,9 @@ public class EchoApplication {
 			} else {
 				return new TextMessage("你還沒教我這個。");
 			}
-		} 
+		//} 
 		
-		return new TextMessage("");
+		//return new TextMessage("");
     }
 
     @EventMapping
