@@ -32,32 +32,20 @@ public class EchoApplication {
     public static void main(String[] args) {
         SpringApplication.run(EchoApplication.class, args);
     }
-	
-	/*
-    @EventMapping(priority = 1, secretKey = 8cf12b924a94a9f309db6a8e347e027a)
-    public void handleTextMessageEvent1(MessageEvent<TextMessageContent> event, String secretKey) {
-        System.out.println("event: " + event);
-        System.out.println("secretKey: " + secretKey);
-        lineMessagingClientFactory.get(secretKey).pushMessage(new PushMessage(event.getSource().getUserId(), new TextMessage("test")));
-    }
-	
-    @EventMapping(priority = 1, secretKey = "${your-channel-secret-2}")
-    public void handleTextMessageEvent2(MessageEvent<TextMessageContent> event) {
-        System.out.println("event: " + event);
-        System.out.println("secretKey: " + new Object(){}.getClass().getEnclosingMethod().getAnnotation(EventMapping.class).secretKey());
-        lineMessagingClient.pushMessage(new PushMessage(event.getSource().getUserId(), new TextMessage("test")));
-    }
-	*/
+
     @EventMapping
-    public void handleLocationMessageEvent(MessageEvent<LocationMessageContent> event)
-    {
+    public TextMessage handleTextMessageEvent(MessageEvent<TextMessageContent> event) {
         System.out.println("event: " + event);
-        lineMessagingClient.pushMessage(new PushMessage(event.getSource().getUserId(), new TextMessage("test")));
+		
+		if(event.getMessage().getText().equils("早安")) {
+			return new TextMessage("早安吃飽了嘛?");
+		} else {
+			return new TextMessage(event.getMessage().getText());
+		}
     }
 
     @EventMapping
-    public void handleDefaultMessageEvent(Event event, String secretKey) {
+    public void handleDefaultMessageEvent(Event event) {
         System.out.println("event: " + event);
-        System.out.println("secretKey: " + secretKey);
     }
 }
