@@ -77,9 +77,9 @@ public class EchoApplication {
 			} else {
 				return new TextMessage("你還沒教我這個。");
 			}
-		} else {
-			return new TextMessage("");
-		}
+		} 
+		
+		return null;
     }
 
     @EventMapping
