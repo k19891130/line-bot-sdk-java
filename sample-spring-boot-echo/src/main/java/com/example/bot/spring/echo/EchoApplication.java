@@ -39,8 +39,24 @@ public class EchoApplication {
 		
 		if(event.getMessage().getText().equals("早安")) {
 			return new TextMessage("早安吃飽了嘛?");
+		} else if(event.getMessage().getText().contains("愛我") && event.getMessage().getText().contains("?")) {
+			return new TextMessage("愛");
+		} else if(event.getMessage().getText().contains("美") && event.getMessage().getText().contains("?")) {
+			return new TextMessage("美");
+		} else if(event.getMessage().getText().contains("能") && event.getMessage().getText().contains("?")) {
+			return new TextMessage("能");
+		} else if(event.getMessage().getText().contains("帥") && event.getMessage().getText().contains("?")) {
+			return new TextMessage("帥");
+		} else if(event.getMessage().getText().contains("胖") && event.getMessage().getText().contains("?")) {
+			return new TextMessage("不胖");
+		} else if(event.getMessage().getText().contains("好") && event.getMessage().getText().contains("?")) {
+			return new TextMessage("好");
+		} else if(event.getMessage().getText().contains("對") && event.getMessage().getText().contains("?")) {
+			return new TextMessage("對");
+		} else if(event.getMessage().getText().contains("是") && event.getMessage().getText().contains("?")) {
+			return new TextMessage("是");
 		} else {
-			return new TextMessage(event.getMessage().getText());
+			return new TextMessage("Wanger : " + event.getMessage().getText());
 		}
     }
 
