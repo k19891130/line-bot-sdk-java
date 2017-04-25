@@ -73,12 +73,11 @@ public class EchoApplication {
 			hmap.put(event.getMessage().getText().split("學:")[1].split("#31#")[0], event.getMessage().getText().split("學:")[1].split("#31#")[1]);
 			return new TextMessage("我學起來了。");
 		} else if(event.getMessage().getText().contains("$$")) {
-			//String code = event.getMessage().getText().replace("$", "");
-			//String urlString = "http://finance.google.com/finance/info?client=ig&q=" + code;
+			String code = event.getMessage().getText().replace("$", "");
+			String urlString = "http://finance.google.com/finance/info?client=ig&q=" + code;
 			String result = "查不到此股票";
-			return new TextMessage(result);
 			
-			/*
+			
 			try {
 				URL url = new URL(urlString);
 				HttpURLConnection connection = (HttpURLConnection) url.openConnection();
@@ -106,7 +105,7 @@ public class EchoApplication {
 				e.printStackTrace();
 				return null;
 			}
-			*/
+			
 		} else {
 			return null;
 		}
