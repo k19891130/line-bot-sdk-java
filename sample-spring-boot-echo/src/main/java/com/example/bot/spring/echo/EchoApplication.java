@@ -78,7 +78,7 @@ public class EchoApplication {
 				return new TextMessage("你還沒教我這個。");
 			}
 		} else {
-			return null;
+			return new TextMessage();
 		}
     }
 
