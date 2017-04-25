@@ -34,9 +34,10 @@ public class EchoApplication {
     }
 
     @EventMapping
-    public TextMessage handleTextMessageEvent(MessageEvent<TextMessageContent> event) {
+    public void handleTextMessageEvent(MessageEvent<TextMessageContent> event) {
         System.out.println("event: " + event);
-        return new TextMessage(event.getMessage().getText());
+		lineMessagingClient.pushMessage(new PushMessage(event.getSource().getUserId(), new TextMessage(event.getSource().getUserId() + " : " + event.getMessage().getText())));
+        //return new TextMessage(event.getMessage().getText());
     }
 
     @EventMapping
