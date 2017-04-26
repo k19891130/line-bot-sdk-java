@@ -73,10 +73,10 @@ public class EchoApplication {
 		} else if(event.getMessage().getText().contains("學:")){
 			hmap.put(event.getMessage().getText().split("學:")[1].split("#31#")[0], event.getMessage().getText().split("學:")[1].split("#31#")[1]);
 			return new TextMessage("我學起來了。");
-		} else if(event.getMessage().getText().contains("股票")) { 
-			code = event.getMessage().getText().split("股票")[1];
-			//String urlString = "http://finance.google.com/finance/info?client=ig&q=" + code;
-			//String result = "查不到此股票";
+		} else if(event.getMessage().getText().contains("#") && event.getMessage().getText().length() == 5) { 
+			code = event.getMessage().getText().split("#")[1];
+			String urlString = "http://finance.google.com/finance/info?client=ig&q=" + code;
+			String result = "查不到此股票";
 			
 			/*
 			try {
