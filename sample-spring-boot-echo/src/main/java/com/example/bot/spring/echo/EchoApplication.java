@@ -88,7 +88,6 @@ public class EchoApplication {
 			urlString = "http://finance.google.com/finance/info?client=ig&q=" + code;
 			result = "查不到此股票";
 			
-			
 			try {
 				url = new URL(urlString);
 				connection = (HttpURLConnection) url.openConnection();
@@ -112,7 +111,7 @@ public class EchoApplication {
 				return new TextMessage(result);
 			} catch (Exception e) {
 				e.printStackTrace();
-				return new TextMessage(result);
+				return new TextMessage(urlString);
 			}
 		} else {
 			return null;
