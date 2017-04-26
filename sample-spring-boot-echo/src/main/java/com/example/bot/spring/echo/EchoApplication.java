@@ -77,9 +77,9 @@ public class EchoApplication {
 			String urlString = "http://finance.google.com/finance/info?client=ig&q=" + code;
 			String result = "查不到此股票";
 			
-			
+			/*
 			try {
-				/*URL url = new URL(urlString);
+				URL url = new URL(urlString);
 				HttpURLConnection connection = (HttpURLConnection) url.openConnection();
 				connection.setRequestMethod("GET");
 				connection.setConnectTimeout(30000);
@@ -93,7 +93,7 @@ public class EchoApplication {
 					response.append(line+"\n");
 				}
 				result = response.toString();
-				*/
+				
 				//System.out.println(result);
 				//String time = result.split("\"lt\" : \"")[1].split("\"")[0];
 				//String money = result.split("\"l_cur\" : \"")[1].split("\"")[0];
@@ -104,7 +104,8 @@ public class EchoApplication {
 			} catch (Exception e) {
 				e.printStackTrace();
 				return null;
-			}			
+			}
+			*/		
 		} else {
 			return null;
 		}
