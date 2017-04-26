@@ -43,6 +43,14 @@ public class EchoApplication {
 	static String code = "";
 	static String urlString = "";
 	static String result = "";
+	static URL url;
+	static HttpURLConnection connection;
+	static BufferedReader bufferedReader;
+	static StringBuilder response;
+	static String line;
+	static String time = "";
+	static String money = "";
+	static String up = "";
 	
     public static void main(String[] args) {
         SpringApplication.run(EchoApplication.class, args);
@@ -80,35 +88,34 @@ public class EchoApplication {
 			urlString = "http://finance.google.com/finance/info?client=ig&q=" + code;
 			result = "查不到此股票";
 			
-			/*
+			
 			try {
-				URL url = new URL(urlString);
-				HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+				url = new URL(urlString);
+				connection = (HttpURLConnection) url.openConnection();
 				connection.setRequestMethod("GET");
 				connection.setConnectTimeout(30000);
 				connection.setReadTimeout(30000);
 				connection.connect();
-				BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(connection.getInputStream(), "UTF-8"));
-				StringBuilder response = new StringBuilder();
-				String line;
+				bufferedReader = new BufferedReader(new InputStreamReader(connection.getInputStream(), "UTF-8"));
+				response = new StringBuilder();
+				line;
 					
 				while ((line = bufferedReader.readLine()) != null) {
 					response.append(line+"\n");
 				}
 				result = response.toString();
 				
-				//System.out.println(result);
-				//String time = result.split("\"lt\" : \"")[1].split("\"")[0];
-				//String money = result.split("\"l_cur\" : \"")[1].split("\"")[0];
-				//String up = result.split("\"c\" : \"")[1].split("\"")[0];
-				//result = "交易時間 : " + time + "\n價格 : " + money + "\n漲幅 : " + up;
+				time = result.split("\"lt\" : \"")[1].split("\"")[0];
+				money = result.split("\"l_cur\" : \"")[1].split("\"")[0];
+				up = result.split("\"c\" : \"")[1].split("\"")[0];
+				result = "交易時間 : " + time + "\n價格 : " + money + "\n漲幅 : " + up;
 				
 				return new TextMessage(result);
 			} catch (Exception e) {
 				e.printStackTrace();
 				return null;
 			}
-			*/		
+				
 			return null;
 		} else {
 			return null;
