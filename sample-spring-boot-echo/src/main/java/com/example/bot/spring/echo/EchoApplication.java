@@ -102,7 +102,7 @@ public class EchoApplication {
 				result = "6";
 				connection.connect();
 				result = "7";
-				bufferedReader = new BufferedReader(new InputStreamReader(connection.getInputStream(), "UTF-8"));
+				bufferedReader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
 				result = "8";
 				response = new StringBuilder();
 				result = "9";
