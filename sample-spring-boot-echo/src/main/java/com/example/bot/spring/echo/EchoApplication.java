@@ -115,8 +115,6 @@ public class EchoApplication {
 				e.printStackTrace();
 				return null;
 			}
-				
-			return null;
 		} else {
 			return null;
 		}
