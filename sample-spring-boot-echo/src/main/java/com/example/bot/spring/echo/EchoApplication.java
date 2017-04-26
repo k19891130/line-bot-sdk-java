@@ -95,18 +95,16 @@ public class EchoApplication {
 				result = response.toString();
 				*/
 				System.out.println(result);
-				String time = result.split("\"lt\" : \"")[1].split("\"")[0];
-				String money = result.split("\"l_cur\" : \"")[1].split("\"")[0];
-				String up = result.split("\"c\" : \"")[1].split("\"")[0];
+				//String time = result.split("\"lt\" : \"")[1].split("\"")[0];
+				//String money = result.split("\"l_cur\" : \"")[1].split("\"")[0];
+				//String up = result.split("\"c\" : \"")[1].split("\"")[0];
 				result = "交易時間 : " + time + "\n價格 : " + money + "\n漲幅 : " + up;
 				
 				return new TextMessage(result);
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 				return null;
-			}
-			
+			}			
 		} else {
 			return null;
 		}
