@@ -120,7 +120,7 @@ public class EchoApplication {
 				return new TextMessage(result);
 			} catch (Exception e) {
 				e.printStackTrace();
-				return new TextMessage(urlString);
+				return new TextMessage(result);
 			}
 		} else {
 			return null;
