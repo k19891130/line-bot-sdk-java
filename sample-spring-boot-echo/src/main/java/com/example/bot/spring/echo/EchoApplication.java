@@ -74,8 +74,8 @@ public class EchoApplication {
 			return new TextMessage("我學起來了。");
 		} else if(event.getMessage().getText().contains("股票")) { 
 			String code = event.getMessage().getText();
-			String urlString = "http://finance.google.com/finance/info?client=ig&q=" + code.split("股票")[1];
-			String result = "查不到此股票";
+			//String urlString = "http://finance.google.com/finance/info?client=ig&q=" + code.split("股票")[1];
+			//String result = "查不到此股票";
 			
 			/*
 			try {
