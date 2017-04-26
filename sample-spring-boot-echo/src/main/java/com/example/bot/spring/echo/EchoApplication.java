@@ -41,6 +41,8 @@ public class EchoApplication {
 	static HashMap<String, String> hmap = new HashMap<String, String>();
 	static boolean power = false;
 	static String code = "";
+	static String urlString = "";
+	static String result = "";
 	
     public static void main(String[] args) {
         SpringApplication.run(EchoApplication.class, args);
@@ -75,8 +77,8 @@ public class EchoApplication {
 			return new TextMessage("我學起來了。");
 		} else if(event.getMessage().getText().contains("#") && event.getMessage().getText().length() == 5) { 
 			code = event.getMessage().getText().split("#")[1];
-			String urlString = "http://finance.google.com/finance/info?client=ig&q=" + code;
-			String result = "查不到此股票";
+			urlString = "http://finance.google.com/finance/info?client=ig&q=" + code;
+			result = "查不到此股票";
 			
 			/*
 			try {
