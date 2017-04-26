@@ -98,7 +98,6 @@ public class EchoApplication {
 				connection.connect();
 				bufferedReader = new BufferedReader(new InputStreamReader(connection.getInputStream(), "UTF-8"));
 				response = new StringBuilder();
-				line;
 					
 				while ((line = bufferedReader.readLine()) != null) {
 					response.append(line+"\n");
