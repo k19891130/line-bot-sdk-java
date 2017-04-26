@@ -89,14 +89,23 @@ public class EchoApplication {
 			result = "查不到此股票";
 			
 			try {
+				result = "1";
 				url = new URL(urlString);
+				result = "2";
 				connection = (HttpURLConnection) url.openConnection();
+				result = "3";
 				connection.setRequestMethod("GET");
+				result = "4";
 				connection.setConnectTimeout(30000);
+				result = "5";
 				connection.setReadTimeout(30000);
+				result = "6";
 				connection.connect();
+				result = "7";
 				bufferedReader = new BufferedReader(new InputStreamReader(connection.getInputStream(), "UTF-8"));
+				result = "8";
 				response = new StringBuilder();
+				result = "9";
 					
 				while ((line = bufferedReader.readLine()) != null) {
 					response.append(line+"\n");
