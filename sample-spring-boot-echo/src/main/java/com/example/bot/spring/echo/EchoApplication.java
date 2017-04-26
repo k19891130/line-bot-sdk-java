@@ -104,10 +104,10 @@ public class EchoApplication {
 				}
 				result = response.toString();
 				
-				time = result.split("\"lt\" : \"")[1].split("\"")[0];
-				money = result.split("\"l_cur\" : \"")[1].split("\"")[0];
-				up = result.split("\"c\" : \"")[1].split("\"")[0];
-				result = "交易時間 : " + time + "\n價格 : " + money + "\n漲幅 : " + up;
+				//time = result.split("\"lt\" : \"")[1].split("\"")[0];
+				//money = result.split("\"l_cur\" : \"")[1].split("\"")[0];
+				//up = result.split("\"c\" : \"")[1].split("\"")[0];
+				//result = "交易時間 : " + time + "\n價格 : " + money + "\n漲幅 : " + up;
 				
 				return new TextMessage(result);
 			} catch (Exception e) {
